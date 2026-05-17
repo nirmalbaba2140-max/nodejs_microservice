@@ -78,7 +78,7 @@ services:
       - shopping
       - customer
     ports:
-      - "80:80"
+      - "8088:80"
     restart: always
 
 volumes:
