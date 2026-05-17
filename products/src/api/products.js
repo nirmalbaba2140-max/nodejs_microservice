@@ -133,7 +133,7 @@ module.exports = (app, channel) => {
   });
 
   //get Top products and category
-  app.get("/", async (req, res, next) => {
+  app.get("/products", async (req, res, next) => {
     //check validation
     try {
       const { data } = await service.GetProducts();
