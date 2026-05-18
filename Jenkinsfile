@@ -4,6 +4,24 @@ pipeline {
 
     stages {
 
+        // =========================
+        // CLEAN OLD CONTAINERS
+        // =========================
+
+        stage('Cleanup Old Containers') {
+
+            steps {
+
+                bat 'docker compose down --remove-orphans'
+
+            }
+
+        }
+
+        // =========================
+        // CLONE REPOSITORY
+        // =========================
+
         stage('Clone Repository') {
 
             steps {
@@ -13,6 +31,10 @@ pipeline {
             }
 
         }
+
+        // =========================
+        // BUILD CONTAINERS
+        // =========================
 
         stage('Build Docker Containers') {
 
@@ -62,7 +84,7 @@ pipeline {
 
             steps {
 
-                bat 'docker tag kubecart-pipeline-nginx-proxy:latest nnirmal24/kubecart-frontend:latest'
+                bat 'docker tag kubecart-pipeline-frontend:latest nnirmal24/kubecart-frontend:latest'
 
             }
 
@@ -135,7 +157,7 @@ pipeline {
         }
 
         // =========================
-        // VERIFY CONTAINERS
+        // VERIFY RUNNING CONTAINERS
         // =========================
 
         stage('Check Running Containers') {
