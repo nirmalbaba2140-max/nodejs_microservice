@@ -24,6 +24,10 @@ pipeline {
 
         }
 
+        // =========================
+        // TAG IMAGES
+        // =========================
+
         stage('Tag Products Image') {
 
             steps {
@@ -33,6 +37,40 @@ pipeline {
             }
 
         }
+
+        stage('Tag Customer Image') {
+
+            steps {
+
+                bat 'docker tag kubecart-pipeline-customer:latest nnirmal24/kubecart-customer:latest'
+
+            }
+
+        }
+
+        stage('Tag Shopping Image') {
+
+            steps {
+
+                bat 'docker tag kubecart-pipeline-shopping:latest nnirmal24/kubecart-shopping:latest'
+
+            }
+
+        }
+
+        stage('Tag Frontend Image') {
+
+            steps {
+
+                bat 'docker tag kubecart-pipeline-nginx-proxy:latest nnirmal24/kubecart-frontend:latest'
+
+            }
+
+        }
+
+        // =========================
+        // DOCKER LOGIN
+        // =========================
 
         stage('DockerHub Login') {
 
@@ -52,6 +90,10 @@ pipeline {
 
         }
 
+        // =========================
+        // PUSH IMAGES
+        // =========================
+
         stage('Push Products Image') {
 
             steps {
@@ -61,6 +103,40 @@ pipeline {
             }
 
         }
+
+        stage('Push Customer Image') {
+
+            steps {
+
+                bat 'docker push nnirmal24/kubecart-customer:latest'
+
+            }
+
+        }
+
+        stage('Push Shopping Image') {
+
+            steps {
+
+                bat 'docker push nnirmal24/kubecart-shopping:latest'
+
+            }
+
+        }
+
+        stage('Push Frontend Image') {
+
+            steps {
+
+                bat 'docker push nnirmal24/kubecart-frontend:latest'
+
+            }
+
+        }
+
+        // =========================
+        // VERIFY CONTAINERS
+        // =========================
 
         stage('Check Running Containers') {
 
