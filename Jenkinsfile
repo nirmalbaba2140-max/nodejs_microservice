@@ -24,6 +24,26 @@ pipeline {
 
         }
 
+        stage('Tag Products Image') {
+
+            steps {
+
+                bat 'docker tag kubecart-pipeline-products:latest nnirmal24/kubecart-products:latest'
+
+            }
+
+        }
+
+        stage('Push Products Image') {
+
+            steps {
+
+                bat 'docker push nnirmal24/kubecart-products:latest'
+
+            }
+
+        }
+
         stage('Check Running Containers') {
 
             steps {
