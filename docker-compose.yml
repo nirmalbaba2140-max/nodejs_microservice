@@ -68,12 +68,21 @@ services:
       - ./customer:/app/customer
       - /app/customer/node_modules
 
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    restart: always
+
   nginx-proxy:
     build:
       context: ./proxy
       dockerfile: Dockerfile
     container_name: nginx-proxy
     depends_on:
+      - frontend
       - products
       - shopping
       - customer
