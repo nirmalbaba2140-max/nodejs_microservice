@@ -2,7 +2,6 @@ services:
 
   nosql-db:
     image: mongo:latest
-    container_name: nosql-db
     ports:
       - "27018:27017"
     volumes:
@@ -11,7 +10,6 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
-    container_name: rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -21,7 +19,6 @@ services:
     build:
       context: ./products
       dockerfile: Dockerfile
-    container_name: products
     ports:
       - "8002:8002"
     restart: always
@@ -38,7 +35,6 @@ services:
     build:
       context: ./shopping
       dockerfile: Dockerfile
-    container_name: shopping
     ports:
       - "8003:8003"
     restart: always
@@ -55,7 +51,6 @@ services:
     build:
       context: ./customer
       dockerfile: Dockerfile
-    container_name: customer
     ports:
       - "8001:8001"
     restart: always
@@ -71,7 +66,6 @@ services:
   frontend:
     build:
       context: ./frontend
-    container_name: frontend
     ports:
       - "3000:80"
     restart: always
@@ -80,7 +74,6 @@ services:
     build:
       context: ./proxy
       dockerfile: Dockerfile
-    container_name: nginx-proxy
     depends_on:
       - frontend
       - products
