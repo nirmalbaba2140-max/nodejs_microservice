@@ -74,6 +74,15 @@ module.exports = (app, channel) => {
 
   });
 
+  // WHOAMI ROUTE
+  app.get("/whoami", (req, res, next) => {
+
+    return res.status(200).json({
+      msg: "/products : I am products Service",
+    });
+
+  });
+
   // GET PRODUCT BY ID
   app.get("/:id", async (req, res, next) => {
 
@@ -185,14 +194,6 @@ module.exports = (app, channel) => {
     };
 
     res.status(200).json(response);
-
-  });
-
-  app.get("/whoami", (req, res, next) => {
-
-    return res.status(200).json({
-      msg: "/products : I am products Service",
-    });
 
   });
 
