@@ -21,6 +21,7 @@ spec:
         - name: shopping
 
           image: nnirmal24/kubecart-shopping:latest
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 8003
