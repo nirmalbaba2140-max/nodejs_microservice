@@ -25,7 +25,7 @@ function Home() {
 
     try {
 
-      const response = await axios.get("http://localhost:8088/products");
+      const response = await axios.get("http://products-service:8002/products");
 
       setProducts(response.data.products);
 
@@ -73,7 +73,7 @@ function Home() {
       {/* Hero */}
       <div className="hero">
 
-        <h1>Welcome To KubeCart</h1>
+        <h1>WELCOME TO KUBECART DEVOPS PROJECT</h1>
 
         <p>
           Modern DevOps Powered Ecommerce Platform 🚀

@@ -157,14 +157,31 @@ pipeline {
         }
 
         // =========================
-        // VERIFY RUNNING CONTAINERS
+        // RESTART KUBERNETES PODS
         // =========================
 
-        stage('Check Running Containers') {
+        stage('Restart Kubernetes Deployments') {
 
             steps {
 
-                bat 'docker ps'
+                bat 'kubectl rollout restart deployment products-deployment'
+                bat 'kubectl rollout restart deployment customer-deployment'
+                bat 'kubectl rollout restart deployment shopping-deployment'
+                bat 'kubectl rollout restart deployment frontend-deployment'
+
+            }
+
+        }
+
+        // =========================
+        // VERIFY KUBERNETES PODS
+        // =========================
+
+        stage('Check Kubernetes Pods') {
+
+            steps {
+
+                bat 'kubectl get pods'
 
             }
 
