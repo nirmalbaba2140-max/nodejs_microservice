@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: app-config
+
+data:
+  MONGODB_PRODUCTS: "mongodb://mongo:27017/msytt_product"
+
+  MONGODB_CUSTOMER: "mongodb://mongo:27017/msytt_customer"
+
+  MONGODB_SHOPPING: "mongodb://mongo:27017/msytt_shopping"
+
+  MSG_QUEUE_URL: "amqp://rabbitmq:5672"
+
+  EXCHANGE_NAME: "ONLINE_STORE"

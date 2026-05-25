@@ -2,47 +2,38 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: products-deployment
+  name: shopping-deployment
 
 spec:
-  replicas: 3
+  replicas: 2
 
   selector:
     matchLabels:
-      app: products
+      app: shopping
 
   template:
     metadata:
       labels:
-        app: products
+        app: shopping
 
     spec:
       containers:
-        - name: products
+        - name: shopping
 
-          image: nnirmal24/kubecart-products:latest
+          image: nnirmal24/kubecart-shopping:latest
 
           ports:
-            - containerPort: 8002
-
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
+            - containerPort: 8003
 
           env:
             - name: PORT
-              value: "8002"
+              value: "8003"
 
             - name: MONGODB_URI
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: MONGODB_PRODUCTS
+                  key: MONGODB_SHOPPING
 
             - name: MSG_QUEUE_URL
               valueFrom:
