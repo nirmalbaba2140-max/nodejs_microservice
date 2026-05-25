@@ -2,6 +2,12 @@ pipeline {
 
     agent any
 
+    environment {
+
+        KUBECONFIG = 'C:\\Users\\user.DESKTOP-G887T85\\.kube\\config'
+
+    }
+
     stages {
 
         // =========================
