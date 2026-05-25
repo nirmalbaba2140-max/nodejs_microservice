@@ -25,7 +25,7 @@ function Home() {
 
     try {
 
-      const response = await axios.get("http://products-service:8002/products");
+      const response = await axios.get("http://localhost:8002/products");
 
       setProducts(response.data.products);
 
